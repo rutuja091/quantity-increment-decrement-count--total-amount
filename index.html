@@ -19,7 +19,7 @@
        } 
        .product-card{
          
-         width:200px;
+         width:250px;
          border-radius:20px ;
          background-color: #ffff;
          box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -32,7 +32,7 @@
         font-size: 16px;
        }
        .card-body{
-           margin-left:30px;
+           margin:10px;
        }
        .product-description{
         font-size: 14px;
@@ -45,7 +45,25 @@
         border: none;
         color: #ffff;
         border-radius:20px ;
+        border: none;
+        padding: 5px 20px;
+        display: block;
+        margin: 10px auto;
+        cursor: pointer;
         background-image: linear-gradient( 135deg, #C2FFD8 10%, #465EFB 100%);
+       }
+       .btn-quantity{
+        height: 25px;
+       }
+       .quantity-btn-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+       }
+       .quantity-text{
+        font-size: 25px;
+        margin: auto 10px;
        }
     </style>
 </head>
@@ -54,14 +72,52 @@
 <img src="Watch.png" class="watch-img">
 <div class="card-body">
 <h2 class="product-title"> Smart Watch D20</h2>
-<p class="product-description">Water proof ( not for swimming ) Smart fitness Band with Bluetooth And 
+<p class="product-description">Water proof (not for swimming) Smart fitness Band with Bluetooth And 
      Heart Rate sensor, Activity Recorder, Sleep Monitor, Calorie Counter, Call .
 </p>
-<p class="product-price">
-    ₹ 699.00/-
-</p>
+<p class="product-price">₹ 699/-</p>
+<p id="show-quantity">1 x  699/-</p>
+<p id="show-total">Total 699</p>
+<div class="quantity-btn-container">
+    <img src="minus.png" class="btn-quantity"onclick="dec()">
+    <span class="quantity-text" id="quantity-text">1 </span>
+    
+    <img src="plus.png"class="btn-quantity" onclick="inc()">
+</div>
 <button type="button" class="btn-buy-now">Buy Now</button>
 </div>
    </div> 
+   <script>
+  function inc(){
+const quantityText = document.getElementById("quantity-text");
+ const showQuantity=document.getElementById("show-quantity");
+ const showTotal=document.getElementById("show-total");
+ let quantity = parseInt( quantityText.innerText);
+ if(quantity<20){
+ quantityText.innerText =++quantity;
+ }
+ else
+  {
+    alert("You can't add more than 20 items");
+  }
+  showQuantity.innerText=`${quantity} x 699`;
+  showTotal.innerText=`Total :${quantity * 699} `;
+}
+  function dec(){
+ const quantityText = document.getElementById("quantity-text");
+ const showQuantity=document.getElementById("show-quantity");
+ const showTotal=document.getElementById("show-total");
+ let quantity = parseInt(quantityText.innerText);
+ if(quantity>1){
+ quantityText.innerText =--quantity;
+ }
+ else
+ {
+    alert("You can't add less than 1 items");
+}
+showQuantity.innerText=`${quantity} x 699`;
+showTotal.innerText=`Total :${quantity * 699} `;
+ }
+   </script>
 </body>
 </html>
